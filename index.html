@@ -93,26 +93,21 @@
 </head>
 <body>
 
-  <!-- Header -->
   <div class="header">
     <h1>Henkaten Record</h1>
     <p>Per Mesin</p>
   </div>
 
-  <!-- Info Mesin -->
   <div id="machine-info" class="machine-info">
     Memuat data mesin...
   </div>
 
-  <!-- Tombol Utama -->
   <p class="section-title">Formulir</p>
   <a href="#" id="btn-henkaten" class="button btn-primary">
     📝 Isi Form Henkaten
   </a>
-
   <p class="note">Form otomatis isi kode mesin dan cylinder block</p>
 
-  <!-- Fitur Lain (Belum Tersedia) -->
   <p class="section-title">Fitur Lain</p>
   <a href="#" class="button btn-disabled">
     🔧 Tool Management System
@@ -121,7 +116,6 @@
     📁 Sharepoint List
   </a>
 
-  <!-- Kontak -->
   <p class="section-title">Dukungan</p>
   <a href="https://api.whatsapp.com/send/?phone=628986264957&text=Halo,%20saya%20butuh%20bantuan" class="button btn-wa" target="_blank">
     💬 Hubungi Admin via WA
@@ -132,20 +126,14 @@
     Scan QR untuk akses cepat per mesin.
   </div>
 
-  <!-- Script Dinamis -->
   <script>
-    // Baca parameter dari URL
     const urlParams = new URLSearchParams(window.location.search);
     const mesin = urlParams.get('mesin') || 'Tidak Diketahui';
     const line = urlParams.get('line') || 'Tidak Diketahui';
-    const cylinder = urlParams.get('cylinder') || 'Cylinder Block';
-
-    // Tampilkan info mesin
     document.getElementById('machine-info').textContent = `Line ${line} - ${mesin}`;
 
-    // Buat link form dinamis
     const baseUrl = 'https://forms.office.com/Pages/ResponsePage.aspx?id=a7HHR4LUR0GyGgSTbdiYdcuI36EV_z5Mu9IEROZH0UZUQ1BCWFo4UlNCVUlBUFVGTjFIWlozTTEwMC4u';
-    const formLink = `${baseUrl}&r530d2e30553c48948d2459086114b76d=${encodeURIComponent(cylinder)}&r8a7952bb757746a38a8e2b10c9e2a579=${encodeURIComponent(mesin)}`;
+    const formLink = `${baseUrl}&r530d2e30553c48948d2459086114b76d=Cylinder%20Block&r8a7952bb757746a38a8e2b10c9e2a579=${encodeURIComponent(mesin)}`;
     document.getElementById('btn-henkaten').href = formLink;
   </script>
 
