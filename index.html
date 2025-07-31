@@ -6,75 +6,148 @@
   <title>Henkaten Record Per Mesin</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #f0f2f5;
       text-align: center;
-      padding: 50px 20px;
+      padding: 30px 20px;
       color: #333;
+      max-width: 600px;
+      margin: auto;
+    }
+    .header {
+      background-color: #1c1e21;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     h1 {
-      color: #1c1e21;
-      margin-bottom: 10px;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
     }
-    p {
-      color: #606770;
+    .machine-info {
+      background-color: #007BFF;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin: 15px 0;
       font-size: 18px;
-      margin-bottom: 30px;
+    }
+    .section-title {
+      text-align: left;
+      margin: 30px 0 15px 0;
+      color: #444;
+      font-size: 16px;
+      font-weight: 600;
     }
     .button {
       display: block;
       width: 90%;
-      max-width: 450px;
-      margin: 20px auto;
+      max-width: 400px;
+      margin: 12px auto;
       padding: 16px;
       font-size: 18px;
       font-weight: bold;
-      background-color: #1877f2;
-      color: white;
       border: none;
       border-radius: 10px;
       text-decoration: none;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: background-color 0.3s, transform 0.2s;
+      transition: transform 0.2s, background-color 0.3s;
     }
     .button:hover {
-      background-color: #166fe5;
       transform: translateY(-2px);
     }
-    .button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-      transform: none;
+    .btn-primary {
+      background-color: #1877f2;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #166fe5;
+    }
+    .btn-disabled {
+      background-color: #6c757d;
+      color: white;
+      pointer-events: none;
+    }
+    .btn-wa {
+      background-color: #25D366;
+      color: white;
+    }
+    .btn-wa:hover {
+      background-color: #128C7E;
     }
     .footer {
       margin-top: 50px;
       color: #888;
       font-size: 14px;
     }
+    .note {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
-  <h1>Henkaten Record Per Mesin</h1>
-  <p>Silakan pilih formulir atau layanan yang dibutuhkan:</p>
 
-  <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=a7HHR4LUR0GyGgSTbdiYdcuI36EV_z5Mu9IEROZH0UZUQ1BCWFo4UlNCVUlBUFVGTjFIWlozTTEwMC4u&r530d2e30553c48948d2459086114b76d=Cylinder%20Block&r8a7952bb757746a38a8e2b10c9e2a579=IMSP-0053" class="button" target="_blank">
-    Henkaten Mesin
+  <!-- Header -->
+  <div class="header">
+    <h1>Henkaten Record</h1>
+    <p>Per Mesin</p>
+  </div>
+
+  <!-- Info Mesin -->
+  <div id="machine-info" class="machine-info">
+    Memuat data mesin...
+  </div>
+
+  <!-- Tombol Utama -->
+  <p class="section-title">Formulir</p>
+  <a href="#" id="btn-henkaten" class="button btn-primary">
+    📝 Isi Form Henkaten
   </a>
 
-  <a href="#" class="button" style="background-color: #6c757d; pointer-events: none; cursor: default;">
-    Tool Management System (Segera Hadir)
+  <p class="note">Form otomatis isi kode mesin dan cylinder block</p>
+
+  <!-- Fitur Lain (Belum Tersedia) -->
+  <p class="section-title">Fitur Lain</p>
+  <a href="#" class="button btn-disabled">
+    🔧 Tool Management System
+  </a>
+  <a href="#" class="button btn-disabled">
+    📁 Sharepoint List
   </a>
 
-  <a href="#" class="button" style="background-color: #6c757d; pointer-events: none; cursor: default;">
-    Sharepoint List (Segera Hadir)
-  </a>
-
-  <a href="https://api.whatsapp.com/send/?phone=628986264957&text&type=phone_number&app_absent=0" class="button" target="_blank">
-    Hubungi WA Admin
+  <!-- Kontak -->
+  <p class="section-title">Dukungan</p>
+  <a href="https://api.whatsapp.com/send/?phone=628986264957&text=Halo,%20saya%20butuh%20bantuan" class="button btn-wa" target="_blank">
+    💬 Hubungi Admin via WA
   </a>
 
   <div class="footer">
-    &copy; 2025 Henkaten Record Per Mesin. Dibuat untuk kemudahan pencatatan dan komunikasi.
+    &copy; 2025 Henkaten Record System.  
+    Scan QR untuk akses cepat per mesin.
   </div>
+
+  <!-- Script Dinamis -->
+  <script>
+    // Baca parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const mesin = urlParams.get('mesin') || 'Tidak Diketahui';
+    const line = urlParams.get('line') || 'Tidak Diketahui';
+    const cylinder = urlParams.get('cylinder') || 'Cylinder Block';
+
+    // Tampilkan info mesin
+    document.getElementById('machine-info').textContent = `Line ${line} - ${mesin}`;
+
+    // Buat link form dinamis
+    const baseUrl = 'https://forms.office.com/Pages/ResponsePage.aspx?id=a7HHR4LUR0GyGgSTbdiYdcuI36EV_z5Mu9IEROZH0UZUQ1BCWFo4UlNCVUlBUFVGTjFIWlozTTEwMC4u';
+    const formLink = `${baseUrl}&r530d2e30553c48948d2459086114b76d=${encodeURIComponent(cylinder)}&r8a7952bb757746a38a8e2b10c9e2a579=${encodeURIComponent(mesin)}`;
+    document.getElementById('btn-henkaten').href = formLink;
+  </script>
+
 </body>
 </html>
