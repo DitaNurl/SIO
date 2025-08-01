@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Henkaten Record Per Mesin</title>
+  <title>SIO</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -19,35 +19,19 @@
       color: white;
       padding: 20px;
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     h1 {
       margin: 0;
-      font-size: 24px;
-      font-weight: 600;
-    }
-    .machine-info {
-      background-color: #007BFF;
-      color: white;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 15px 0;
-      font-size: 19px;
-    }
-    .section-title {
-      text-align: left;
-      margin: 30px 0 15px 0;
-      color: #444;
-      font-size: 16px;
+      font-size: 26px;
       font-weight: 600;
     }
     .button {
       display: block;
       width: 90%;
       max-width: 400px;
-      margin: 12px auto;
+      margin: 15px auto;
       padding: 16px;
       font-size: 18px;
       font-weight: bold;
@@ -67,11 +51,6 @@
     .btn-primary:hover {
       background-color: #166fe5;
     }
-    .btn-disabled {
-      background-color: #6c757d;
-      color: white;
-      pointer-events: none;
-    }
     .btn-wa {
       background-color: #25D366;
       color: white;
@@ -84,81 +63,29 @@
       color: #888;
       font-size: 14px;
     }
-    .note {
-      font-size: 14px;
-      color: #666;
-      margin-top: 5px;
-    }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <h1>Henkaten Record</h1>
-    <p>Per Mesin</p>
+    <h1>SIO</h1>
   </div>
 
-  <div id="machine-info" class="machine-info">
-    Memuat data mesin...
-  </div>
-
-  <p class="section-title">Formulir</p>
-  <a href="#" id="btn-henkaten" class="button btn-primary">
-    📝 Isi Form Henkaten
-  </a>
-  <p class="note">Form otomatis isi kode mesin dan line</p>
-
-  <p class="section-title">Fitur Lain</p>
-  <a href="#" class="button btn-disabled">
-    🔧 Tool Management System
-  </a>
-  <a href="#" class="button btn-disabled">
-    📁 Sharepoint List
+  <a href="https://forms.gle/3WqtukdXuH6SYUFA7" class="button btn-primary" target="_blank">
+    📝 Form Submit Your Progress
   </a>
 
-  <p class="section-title">Dukungan</p>
-  <a href="https://api.whatsapp.com/send/?phone=628986264957&text=Halo,%20saya%20butuh%20bantuan" class="button btn-wa" target="_blank">
-    💬 Hubungi Admin via WA
+  <a href="https://apps.powerapps.com/play/e/default-47c7b16b-d482-4147-b21a-04936dd89875/a/7462d6ad-1f54-41fe-b8fd-03497621b30b?tenantId=47c7b16b-d482-4147-b21a-04936dd89875&hint=19f4e447-a964-4928-82f5-9c0b788f51c3&sourcetime=1754031390271" class="button btn-primary" target="_blank">
+    🚀 PowerApps SIO
+  </a>
+
+  <a href="https://api.whatsapp.com/send/?phone=628986264957&text&type=phone_number&app_absent=0" class="button btn-wa" target="_blank">
+    💬 Contact Admin via WA
   </a>
 
   <div class="footer">
-    &copy; 2025 Henkaten Record System.  
-    Scan QR untuk akses cepat per mesin.
+    &copy; 2025 SIO System.
   </div>
-
-  <script>
-    // Daftar semua line yang valid
-    const validLines = {
-      "Die-Casting": "Die Casting",
-      "Low-Pressure": "Low Pressure",
-      "Cylinder-Head": "Cylinder Head",
-      "Cylinder-Block": "Cylinder Block",
-      "Crank-Shaft": "Crank Shaft",
-      "Cam-Shaft": "Cam Shaft",
-      "Sub-Line": "Sub Line",
-      "Main-Line": "Main Line",
-      "Cleanroom": "Cleanroom"
-    };
-
-    // Baca parameter dari URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const mesin = urlParams.get('mesin') || 'Tidak Diketahui';
-    const lineKey = urlParams.get('line') || 'unknown';
-
-    // Dapatkan nama asli line
-    let lineName = 'Line Tidak Dikenal';
-    if (lineKey !== 'unknown' && validLines[lineKey]) {
-      lineName = validLines[lineKey];
-    }
-
-    // Tampilkan di web
-    document.getElementById('machine-info').textContent = `${lineName} - ${mesin}`;
-
-    // Buat link form dengan parameter
-    const baseUrl = 'https://forms.office.com/Pages/ResponsePage.aspx?id=a7HHR4LUR0GyGgSTbdiYdcuI36EV_z5Mu9IEROZH0UZUQ1BCWFo4UlNCVUlBUFVGTjFIWlozTTEwMC4u';
-    const formLink = `${baseUrl}&r530d2e30553c48948d2459086114b76d=${encodeURIComponent(lineName)}&r8a7952bb757746a38a8e2b10c9e2a579=${encodeURIComponent(mesin)}`;
-    document.getElementById('btn-henkaten').href = formLink;
-  </script>
 
 </body>
 </html>
